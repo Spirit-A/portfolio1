@@ -1,0 +1,548 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #333333;
+    color: white;
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #333;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.logo b {
+    color: #ffc107;
+}
+
+.nav-links-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list, .social-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-left: auto; 
+}
+
+.nav-list li {
+    padding: 0 1rem;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #ffc107; 
+}
+
+.social-list{
+    padding-right: 10px;
+}
+.social-list li {
+    padding: 0 0.5rem;
+}
+
+.social-list li a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.social-list li a:hover {
+    color: #ffc107; 
+}
+
+.fab {
+    font-size: 1.2rem;
+}
+
+.toggle {
+	padding-top: 20px;
+	margin: 0 30px;
+	display: none;
+}
+
+.intro {
+    position: relative;
+    width: 100%;
+    height: 75vh; /* Hauteur complète de la fenêtre */
+}
+
+.intro1, .intro2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: transform 0.5s ease-in-out;
+}
+
+.intro1-left h1{
+    color: white;
+    width: 40%;
+}
+
+.intro1-left h1::before{
+    content: '';
+	position: absolute;
+	bottom: 250px;
+	background-color: #ffc107;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+ .intro1-left h1 span{
+     color: #ffc107;
+ }
+
+ .intro1-left p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.intro2-left h1{
+        display: flex; /* Aligner les éléments de l'en-tête horizontalement */
+        align-items: center; /* Centrer les éléments verticalement */
+        white-space: nowrap; /* Empêcher le texte de passer à la ligne */
+        font-size: 24px; 
+}
+
+.intro2-left p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.intro2-left h1 span {
+    margin-right: 10px;
+    color: #ffc107;
+}
+  
+.intro2-left .inline-logo {
+    width: auto; /* ou une largeur spécifique si nécessaire */
+    height: 50px; /* Hauteur fixe comme spécifié dans votre exemple */
+}
+
+
+
+
+.intro1-right h2, .intro2-right h2 {
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.intro1-right h2, .intro2-right h2 {
+    color: #ffc107;
+}
+
+.intro1-right p, .intro2-right p {
+    font-family: 'Bitter', serif;
+}
+.intro2-right, .intro1-right{
+    max-width: 400px;
+    height: auto;
+    right: -30%;
+}
+
+.contact-btn {
+    border: 1px solid #ffc107;
+    color: #ffc107;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Styles pour les flèches de navigation du slider */
+.fa-arrow-left, .fa-arrow-right {
+    position: absolute;
+    bottom: 10px; /* Position en bas */
+    right: 10px; /* Position à droite */
+    color: #ffc107;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 100;
+}
+
+.fa-arrow-left {
+    right: 60px; /* Position plus à gauche de la flèche droite */
+}
+
+/* Cacher la div non-active */
+.intro1:not(.active), .intro2:not(.active) {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+@media all and (max-width: 1030px) {
+    /* Cache la liste de navigation par défaut */
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #333;
+        z-index: 1000;
+    }
+
+    /* Affiche la liste de navigation lorsque le menu est ouvert */
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list li a {
+        padding: 50px 20px;
+        color: white;
+        display: block;
+        border-bottom: 1px solid #444;
+    }
+
+    .nav-list li:last-child a {
+        border-bottom: none;
+    }
+
+    .social-list{
+        padding-right: 60px;
+    }
+    .toggle {
+        display: block;
+        position: absolute;
+        top: 17px;
+        right: 10px;
+        z-index: 2001;
+        cursor: pointer;
+    }
+
+    .toggle .ouvrir, .toggle .fermer {
+        font-size: 2rem;
+        color: white;
+    }
+
+    /* Cache l'icône de fermeture par défaut */
+    .toggle .fermer {
+        display: none;
+    }
+
+    /* Affiche l'icône de fermeture lorsque le menu est ouvert */
+    .toggle.open .fermer {
+        display: block;
+    }
+
+    /* Cache l'icône d'ouverture lorsque le menu est ouvert */
+    .toggle.open .ouvrir {
+        display: none;
+    }
+}
+
+@media all and (max-width: 968px) {
+    .intro1, .intro2 {
+        top: 100px;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .intro1-left, .intro2-left, .intro1-right, .intro2-right {
+        width: 90%; 
+        text-align: center; 
+        padding: 20px;
+        order: 1; 
+    }
+
+    .intro1 img, .intro2 img {
+        width: 90%; 
+        height: auto;
+        order: 2; 
+        margin: 20px 0; 
+    }
+
+    .intro1-right, .intro2-right {
+        order: 3; 
+    }
+
+    .intro1-right h2, .intro2-right h2{
+        width: 90%; 
+        text-align: center; 
+        padding: 20px;
+        order: 1; 
+        padding-right: 50px;
+    }
+
+    .intro1-left h1, .intro2-left h1{
+        width: 90%; 
+        text-align: center; 
+        padding: 20px;
+        order: 1; 
+        padding-right: 50px;
+    }
+
+
+    /* Ajustements pour les flèches de navigation */
+    .fa-arrow-left, .fa-arrow-right {
+        font-size: 1.5rem; 
+    }
+
+    .intro1-left h1::before{
+        display: none;
+    }
+
+    .navigation-arrows {
+        position: absolute; 
+        bottom: -250px; 
+        left: 70px; 
+        transform: translateX(-50%);
+        width: 100%; 
+        display: flex;
+        justify-content: center; 
+    }
+
+    .fa-arrow-left, .fa-arrow-right {
+        font-size: 2rem;
+        color: #ffc107; 
+        cursor: pointer;
+        margin: 0 20px; 
+    }
+}
+
+.services {
+    background-color: #22222279; 
+    color: white; 
+    text-align: center;
+    padding: 30px 10px; 
+    margin-top: 50px; 
+  }
+  
+  .services h4 {
+    color: #ffc107; 
+    margin-bottom: 10px;
+  }
+  
+  .services h2 {
+    margin-bottom: 20px;
+  }
+  
+  .services p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0 auto 40px auto; 
+    line-height: 1.6; 
+    max-width: 700px; 
+    padding: 0 20px; 
+  }
+  
+  
+  .service-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; 
+    gap: 10px;
+  }
+  
+  .service {
+    flex-basis: calc(25% - 40px); 
+    padding: 12px; 
+    background-color: #222; 
+    border-radius: 10px; 
+    margin-bottom: 20px; 
+  }
+  
+  .service i {
+    font-size: 3rem; 
+    margin-bottom: 20px;
+    color: #ffc107;
+  }
+  
+  .service h3 {
+    margin-bottom: 10px; 
+  }
+  
+  .service p {
+    color: #ffdb6f;
+  }
+  @media (max-width: 1024px) {
+    .service {
+      flex-basis: calc(50% - 40px);
+    }
+    .services {
+        margin-top: 250px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .service {
+      flex-basis: 100%; 
+    }
+  }
+  
+  .latest-projects {
+    background-color: #333; 
+    color: white; 
+    padding: 50px 20px; 
+    text-align: center;
+    overflow: hidden; 
+}
+
+.latest-projects h2 {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.latest-projects p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 30px; 
+    max-width: 600px; 
+    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
+}
+  .project {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px; 
+    display: none; 
+    opacity: 0; 
+    width: 100%;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .project.active {
+    display: flex; 
+    opacity: 1;
+  }
+  
+  .project-image {
+    width: 40%; 
+    height: auto;
+    margin-right: 20px; 
+  }
+  
+  .project-info {
+    text-align: left;
+    width: 55%; 
+  }
+  
+  @media (max-width: 768px) {
+    .project {
+      flex-direction: column; 
+      align-items: flex-start; 
+    }
+  
+    .project-image {
+      width: 100%; 
+      margin-bottom: 20px; 
+    }
+  
+    .project-info {
+      width: 100%;
+      text-align: center;
+    }
+  }
+    .contact-section {
+    background-color: #22222279; 
+    color: white; 
+    padding: 40px; 
+    text-align: center; 
+  }
+  
+  .contact-header h2 {
+    color: #ffc107; 
+    margin-bottom: 20px;
+  }
+  
+  .contact-header p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 40px; 
+    max-width: 700px;
+    line-height: 1.6; 
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  
+  .contact-info {
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+  }
+  
+  .contact-info > div, .social-media a {
+    background-color: #222;
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .contact-info i, .social-media i {
+    margin-right: 10px; 
+    color: #ffc107; 
+    font-size: 1.5rem; 
+  }
+  
+  .contact-info a, .social-media a {
+    color: white;
+    text-decoration: none; 
+    transition: color 0.3s; 
+  }
+  
+  .contact-info a:hover, .social-media a:hover {
+    color: #ffc107; 
+  }
+  
+  .social-media {
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+  }
+  
+  .footer p {
+    border-top: 1px solid #ffc107;
+    padding-top: 20px;
+    margin-top: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-info, .social-media {
+      flex-direction: column; 
+      align-items: center; 
+    }
+  
+    .contact-info > div, .social-media a {
+      width: 80%; 
+      margin-bottom: 20px; 
+    }
+  }
+  
