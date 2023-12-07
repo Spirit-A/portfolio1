@@ -281,7 +281,7 @@ nav {
     }
 
     .intro1 img, .intro2 img {
-        width: 300%; 
+        width: 90%; 
         height: auto;
         order: 2; 
         margin: 20px 0; 
@@ -459,12 +459,12 @@ nav {
     }
   
     .project-image {
-      width: 100%; 
+      width: 90%; 
       margin-bottom: 20px; 
     }
   
     .project-info {
-      width: 100%;
+      width: 90%;
       text-align: center;
     }
   }
